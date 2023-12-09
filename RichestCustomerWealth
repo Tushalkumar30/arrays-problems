@@ -1,24 +1,16 @@
 //You are given an m x n integer grid accounts where accounts[i][j] is the amount of money the i​​​​​​​​​​​th​​​​ customer has in the j​​​​​​​​​​​th​​​​ bank. Return the wealth that the richest customer has.
 class Solution {
     public int maximumWealth(int[][] accounts) {
-        
-        int m = accounts.length;
-        int[] wealth = new int[m];
-        for(int i = 0; i < m; i++)
-        {
-            int n = accounts[i].length;
-            int currentWealth =0;
-            for (int j = 0; j < n; j++) 
-            {
-            currentWealth += accounts[i][j];
+        int maxWealth = 0; 
+        int rows = accounts.length;
+        int cols = accounts[0].length;
+        for( int i =0; i < rows; i++){
+            int wealth = 0;
+            for(int j =0; j < cols; j++){
+                wealth += accounts[i][j];
             }
-            wealth[i] = currentWealth;
+            maxWealth = Math.max(wealth, maxWealth);
         }
-        int maxWealth = 0;
-        for (int i = 0; i < m; i++) {
-            maxWealth = Math.max(maxWealth, wealth[i]);
-        }
-
         return maxWealth;
     }
 }
